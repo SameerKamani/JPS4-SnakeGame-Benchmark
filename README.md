@@ -1,7 +1,3 @@
-Below is the updated README with additional emojis to give it a friendlier, more engaging look:
-
----
-
 # JPS4 Snake & A* Comparison 🐍✨
 
 ## About
