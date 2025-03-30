@@ -6,7 +6,7 @@ Below is the updated README with additional emojis to give it a friendlier, more
 
 ## About
 
-**JPS4 Snake & A* Comparison** is a classic Snake game enhanced with AI pathfinding powered by **JPS4 (Jump Point Search for 4-connected grids)**. This project not only showcases efficient real-time movement but also includes a module to compare the JPS4 algorithm against the standard A* algorithm. The goal is to verify research findings, analyze performance metrics, and gain deeper insights into both pathfinding approaches. 🔍🤖
+JPS4 Snake & A* Comparison is a classic Snake game enhanced with AI pathfinding powered by **JPS4 (Jump Point Search for 4-connected grids)**. This project not only showcases efficient real-time movement but also includes a module to compare the JPS4 algorithm against the standard A* algorithm. The goal is to verify research findings, analyze performance metrics, and gain deeper insights into both pathfinding approaches. 🔍🤖
 
 ## Overview
 
