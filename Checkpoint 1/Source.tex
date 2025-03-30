@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{ADA Project Proposal}
+\author{Team 66 - L1}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Paper Details}
+\textbf{Title: } Jump Point Search Pathfinding in 4-connected Grids \\
+\textbf{Author(s): } Johannes Baum \\
+\textbf{Conference: } 2025 Research Paper (available on \href{https://arxiv.org/abs/2501.14816v1}{arXiv})
+
+\section{Summary}
+This paper introduces \textbf{JPS4}, a novel pathfinding algorithm that has been tailored for 4-connected grid maps. Finding the shortest path between two points is fundamental in fields like video game development, robotics, and navigation systems. Traditionally, the Jump Point Search algorithm (often referred to as JPS8) was designed to work with 8-directional movement. However, JPS4 refines this idea by focusing solely on the four cardinal directions (up, down, left, and right), useful for grid-based scenarios. JPS4 significantly outperform the A* algorithm in environments with high obstacle density—although, in very open spaces, A* may still have an edge.
+
+\section{Justification}
+We found this paper highly relevant due to our interest in algorithm visualization and gaming. The enhancements presented in JPS4 are directly applicable to real-world scenarios. By implementing these ideas into our project, we can gain a deep understanding of path-finding strategies in applications like game level navigation and autonomous robotics. Furthermore, the improvements over A* in terms of reducing computational overhead are compelling to explore further.
+
+\section{Implementation Feasibility}
+The GitHub \href{https://github.com/tbvanderwoude/grid_pathfinding}{repository} provides a Rust-based implementation of a grid-based pathfinding algorithm. It supports both 4-neighborhood (restricting diagonal moves) and 8-neighborhood grids, making it adaptable for us. The combination of a solid theoretical foundation from the referenced paper and practical example code in the repository ensures that implementing JPS4 is feasible. Beyond implementation, we will benchmark JPS4 against A* to compare their efficiency in different grid-based pathfinding scenarios.
+
+Additionally, we can use Python's libraries like Tkinter to develop the snake game, demonstrating the real-world applications of this algorithm.
+
+\section{Team Responsibilities}
+\begin{itemize}
+    \item \textbf{Reading:} We will review the paper and documentation to understand the concepts thoroughly.
+    \item \textbf{Coding:} We will compare the performance of JPS4 with A* to evaluate its efficiency and effectiveness. Furthermore, we will collectively implement JPS4 and integrate it into an autonomous snake game.
+    \item \textbf{Writing:} All team members will contribute to documenting the project.
+\end{itemize}
+
+\end{document}
