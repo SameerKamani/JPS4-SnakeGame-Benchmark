@@ -24,6 +24,10 @@ Despite pruning and skipping nodes, **JPS4 guarantees the same optimal path cost
 
 - **Guaranteed Optimality**: The algorithm maintains the same optimal path cost as A\* while offering improved efficiency.
 
+## Benchmarking
+
+Based on this [Repository](https://github.com/GurkNathe/Pathfinding-Algorithms) by @GurkNathe, we can generate random mazes using [maze.py](https://github.com/OrWestSide/python-scripts/blob/master/maze.py) that simulate complex environments to evaluate A\* vs. JPS4 under various conditions.
+
 ## Technical Challenges and Implementation
 
 - **Recursion Depth**: the `jump()` function may hit stack limits in large environments. 
