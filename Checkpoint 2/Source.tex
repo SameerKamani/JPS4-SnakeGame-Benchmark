@@ -1,0 +1,123 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{float}
+
+\geometry{letterpaper, margin=1in}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{Technical Summary:\\
+\textbf{Jump Point Search Pathfinding in 4-connected Grids} \\
+(Summary of Johannes Baum's Paper)}
+\author{Team 66 - L1}
+\date
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\section*{Overview}
+This document summarizes the key ideas and challenges in implementing Johannes Baum’s paper, \textit{Jump Point Search Pathfinding in 4-connected Grids}. Our goal is to understand how JPS4 works, why it is needed, and what challenges we might face during its implementation.
+
+\section{Problem and Contribution}
+Traditional algorithms like A* often waste time by expanding many unnecessary nodes in dense grid maps. Although JPS8 improves efficiency in 8-connected grids, its techniques do not directly translate to 4-connected grids, where movement is limited to four cardinal directions. This is where \textbf{JPS4} comes in.
+
+JPS4 adapts the jump point search to 4-connected grids by:
+\begin{itemize}
+    \item Using a horizontal-first \textbf{canonical ordering} to eliminate redundant paths.
+    \item \textbf{Pruning non-essential neighbors} and only considering \emph{forced neighbors} when obstacles force a deviation.
+    \item Introducing \textbf{jump points} at key obstacle corners, allowing the search to bypass large sections of nodes.
+\end{itemize}
+These improvements result in significantly faster pathfinding in cluttered environments such as video game maps and robotics navigation.
+
+Before we dive deeper, Figure~\ref{fig:canonical} from the paper illustrates how multiple optimal paths in an obstacle-free grid are pruned into one unique, canonical path.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figure1.png}
+    \caption{Canonical ordering in an obstacle-free grid. Dashed lines indicate multiple optimal paths, which are pruned to a single canonical path using a horizontal-first strategy.}
+    \label{fig:canonical}
+\end{figure}
+
+\section{How the Algorithm Works}
+JPS4 builds on a simple but powerful idea: only explore what’s necessary.
+
+\subsection*{Canonical Ordering and Neighbor Pruning}
+By favoring horizontal moves, the algorithm defines a unique, canonical path. At each node, it considers only:
+\begin{itemize}
+    \item The \textbf{natural neighbor} (the node directly in the direction of travel).
+    \item \textbf{Forced neighbors} that arise when an obstacle forces a deviation.
+\end{itemize}
+This selective exploration is depicted in Figure~\ref{fig:pruning}. Notice how the natural neighbor is maintained, while forced neighbors are added only when obstacles are present.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figure2.png}
+    \caption{Neighbor pruning in action. The algorithm retains the natural neighbor while adding forced neighbors when obstacles block the natural path.}
+    \label{fig:pruning}
+\end{figure}
+
+\subsection*{Jump Points}
+When an obstacle blocks the natural path, the algorithm creates a \textbf{jump point} at the obstacle's corner. This jump point resets the search direction and allows the algorithm to “jump” over multiple nodes instead of expanding each one. Figure~\ref{fig:jump} shows a typical jump point scenario, helping the search resume efficiently after encountering an obstacle.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figure3.png}
+    \caption{When an obstacle is encountered, a jump point is introduced at its corner, allowing the algorithm to bypass unnecessary nodes and resume the search efficiently.}
+    \label{fig:jump}
+\end{figure}
+
+\subsection*{How It All Comes Together}
+The \texttt{jump()} function is central to the algorithm. It continues moving in the current direction until one of the following occurs:
+\begin{itemize}
+    \item The goal is reached.
+    \item A forced neighbor is encountered.
+    \item The direction of movement changes (e.g., from vertical to horizontal).
+\end{itemize}
+This mechanism minimizes unnecessary work and leads to optimal paths with far fewer node expansions. Figure~\ref{fig:benchmarks} provides benchmark results from the paper that demonstrate the efficiency improvements of JPS4 over A* in various map environments.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figure4.png}
+    \caption{Benchmark results illustrating the speedup of JPS4 over A* across different map types, particularly in obstacle-dense environments.}
+    \label{fig:benchmarks}
+\end{figure}
+
+\section{Comparison with Other Methods}
+Compared to A*, JPS4 avoids unnecessary node expansions, resulting in a smaller open list and faster performance in cluttered maps. Unlike JPS8—which is designed for 8-connected grids—JPS4 refines these ideas specifically for grids limited to cardinal directions, making it more suitable for certain applications.
+
+\section{Data Structures and Techniques}
+JPS4 leverages several key data structures and techniques:
+\begin{itemize}
+    \item \textbf{Grid Representation:} A uniform-cost grid where each cell is either free or blocked.
+    \item \textbf{Open List:} Managed using a priority queue (e.g., binary heap) to quickly select the lowest-cost node.
+    \item \textbf{Pruning Mechanism:} Custom logic based on canonical ordering significantly reduces the search space.
+\end{itemize}
+These structures are optimized to work together efficiently and support the selective expansion approach of the algorithm.
+
+\section{Implementation Outlook}
+Although the theoretical design of JPS4 is robust, its practical implementation presents several challenges:
+\begin{itemize}
+    \item \textbf{Recursion Overhead:} The recursive nature of the \texttt{jump()} function might lead to deep call stacks. We could mitigate this by setting a recursion limit or using an iterative approach.
+    \item \textbf{Edge Case Handling:} Special attention is needed for narrow corridors and complex obstacle configurations to ensure the algorithm finds optimal paths.
+    \item \textbf{Memory Efficiency:} Efficient use of data structures for the grid and the open list is essential, especially when dealing with large maps.
+\end{itemize}
+Early strategies include optimizing priority queue operations and employing visualization tools to debug and verify the algorithm’s behavior.
+
+\section*{Conclusion}
+JPS4 offers a clever adaptation of jump point search for 4-connected grids by using canonical ordering and selective neighbor expansion. This results in significant performance gains in cluttered environments. While challenges such as recursion depth and edge-case handling remain, the potential improvements in efficiency make JPS4 a promising approach for applications in video games and robotics.
+
+\end{document}
