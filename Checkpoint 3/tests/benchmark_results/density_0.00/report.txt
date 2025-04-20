@@ -1,0 +1,28 @@
+JPS4 vs A* Benchmark Report - Density 0.00
+==================================================
+
+Grid size: 200x200
+Obstacle density: 0.00
+
+Success Rate: JPS4 100.0%, A* 100.0%
+
+Performance Metrics:
+------------------------------
+Avg Time (JPS4): 0.018979s
+Min Time (JPS4): 0.010104s
+Max Time (JPS4): 0.028969s
+
+Avg Time (A*): 0.006588s
+Min Time (A*): 0.000000s
+Max Time (A*): 0.010147s
+
+Avg Nodes Expanded (JPS4): 255.9
+Avg Nodes Expanded (A*): 254.9
+Node Expansion Ratio (JPS4/A*): 1.00
+
+Avg Path Length (JPS4): 254.9
+Avg Path Length (A*): 254.9
+Path Length Ratio (JPS4/A*): 1.00
+
+Time Performance: JPS4 is 0.35x faster than A*
+Search Efficiency: JPS4 expands 1.00x fewer nodes than A*

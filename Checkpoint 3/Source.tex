@@ -1,0 +1,105 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{placeins}
+
+\title{Progress Report \\ \textbf{Jump Point Search Pathfinding in 4 connected Grids}}
+
+\author{Team 66 - L1}
+
+\date{April 20, 2025}
+
+\begin{document}
+\maketitle
+
+\section{Implementation Summary}
+
+Our implementation of the JPS4 (Jump Point Search for 4-connected grids) algorithm, based on Johannes Baum's paper, is functional. It supports 4-connected grids with cardinal movements, featuring canonical ordering, neighbor pruning, jump point identification, and path reconstruction. We also implemented a fallback A* algorithm within JPS4 to ensure 100\% reliability in cases where JPS4 might fail due to complex grid configurations. No parts of the algorithm were omitted. 
+
+We ran multiple tests on grids of different sizes and densities to compare the performance of the A* Algorithm vs JPS4. Densities here refer to how many nodes on any particular grid were blocked off and could not be visited. Furthermore, we implemented a snake game using Tkinter and integrated JPS4 to navigate a \texttt{20 x 20} grid, demonstrating real-time path-finding around obstacles to reach food.
+
+We found this paper relevant due to our interest in algorithms in gaming. We gained a deep understanding of path-finding strategies in applications like game level navigation.
+
+\section{Correctness Testing}
+
+We followed the exact implementation given in the paper and validated its correctness via:
+
+\begin{enumerate}
+    \item Manual test cases by printing the grid states with paths (S for start, G for goal, * for path, \# for obstacles), as shown in the example usage of both \texttt{a\_star.py} and \texttt{jump\_point\_search.py}.
+    \item Randomly generated benchmark datasets with varying grid sizes and densities to compare JPS4 with baseline A*. Full results are in the \texttt{tests} folder.
+    \item In-game validation via \texttt{validate\_path()}. Paths were visualized using the Python library Tkinter.
+\end{enumerate}
+
+\section{Complexity \& Runtime Analysis}
+
+\textbf{Empirical Estimate of Performance:}
+
+Using the benchmarking code, we tested on many grids of various sizes (\texttt{50 x 50} to \texttt{500 x 500}) and got the following results:
+
+% In your document body
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\linewidth]{jps4.png}
+    \caption{Runtime Analysis of JPS4}
+    \label{fig:jps4-runtime}
+\end{figure}
+
+\FloatBarrier
+
+Comparing the JPS4 implementation with A* on the same grids, we notice A* outperforms our implementation of JPS4 in almost all cases.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\linewidth]{compare.png}
+    \caption{Comparing A* with JPS4}
+    \label{fig:enter-label}
+\end{figure}
+
+\FloatBarrier
+
+We think this could be for several reasons, like:
+
+\begin{enumerate}
+    \item \textbf{Cache Overhead:} Frequent cache checks in our implementation slowed down the algorithm.
+    \item \textbf{Recursive calls} could have been much more costly than we anticipated in functions like \texttt{check\_perpendicular\_jump()}.
+\end{enumerate}
+
+\section{Baseline or Comparative Evaluation}
+
+Through comparing JPS4 against our A* implementation, we noticed that both algorithms maintain a 100\% success rate across all grid sizes, showing no difference in reliability, but JPS4 has higher execution times than A* in almost all cases. Furthermore, JPS4 expands significantly more nodes than A*, peaking around 900 nodes, while A* expands fewer nodes, reaching around 600 at 500 size.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{image.png}
+    \caption{Comparison between JPS4 and A* on large grid size}
+    \label{fig:enter-label}
+\end{figure}
+
+\FloatBarrier
+
+Overall, A* scales better than JSP4 in terms of execution time and node expansion, though both are equally reliable in success rate.
+
+\section{Challenges \& Solutions}
+
+Our primary challenge was converting the JPS4 paper's code into Python. JPS4 performed much worse than the paper's reported speedup. We suspect issues in language-specific optimizations during conversion from Rust to Python, the exact solution remains unclear.
+
+\section{Enhancements}
+
+As part of our additional work for our project:
+
+\begin{itemize}
+    \item We tested JPS4 on many different grid benchmarks and maze-specific tests. These detailed reports and visualizations highlighted the performance of our implementation of JPS4 in Python.
+    \item We tested JPS4 in a dynamic \texttt{20 x 20} grid with easy and hard layouts by implementing it in a Snake Game.
+\end{itemize}
+
+\begin{thebibliography}{9}
+\bibitem{baum2025}
+Johannes Baum, \emph{Jump Point Search Pathfinding in 4-connected Grids}, arXiv:2501.14816v1, January 28, 2025.
+
+\end{thebibliography}
+
+\end{document}
+

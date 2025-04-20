@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project combines a classic Snake game with a demonstration of **JPS4**—a powerful pathfinding algorithm designed for efficient navigation in 4-connected grid environments. In addition to the game, a dedicated component compares the performance and results of the JPS4 algorithm with the A\* algorithm.
+This project combines a classic Snake game with a demonstration of **JPS4**—a powerful pathfinding algorithm designed for efficient navigation in 4-connected grid environments. In addition to the game, a dedicated component compares the performance and results of the JPS4 algorithm with the A\* algorithm. The benchmarking tool focuses on path length, search space size, and success rate.
 
 ## What Is JPS4?
 
@@ -14,7 +14,7 @@ This project combines a classic Snake game with a demonstration of **JPS4**—a 
 - **Pruning Neighbors**: Considers only *natural* and *forced* neighbors, greatly reducing the number of nodes expanded.
 - **Jumping Over Empty Space**: Instead of moving step-by-step, jump points are introduced at strategic corners to skip over multiple cells efficiently.
 
-- **Recursive Jump Mechanism**: The `jump()` function explores straight paths until it hits the goal, a forced neighbor, or a direction change.
+- **Recursive Jump Mechanism**: The `jps_jump()` function explores straight paths until it hits the goal, a forced neighbor, or a direction change.
 
 Despite pruning and skipping nodes, **JPS4 guarantees the same optimal path cost as A\***—but typically with far fewer node expansions.
 
@@ -24,13 +24,9 @@ Despite pruning and skipping nodes, **JPS4 guarantees the same optimal path cost
 
 - **Guaranteed Optimality**: The algorithm maintains the same optimal path cost as A\* while offering improved efficiency.
 
-## Benchmarking
-
-Based on this [Repository](https://github.com/GurkNathe/Pathfinding-Algorithms) by @GurkNathe, we can generate random mazes using [maze.py](https://github.com/OrWestSide/python-scripts/blob/master/maze.py) that simulate complex environments to evaluate A\* vs. JPS4 under various conditions.
-
 ## Technical Challenges and Implementation
 
-- **Recursion Depth**: the `jump()` function may hit stack limits in large environments. 
+- **Recursion Depth**: the `jps_jump()` function may hit stack limits in large environments. 
 - **Edge Case Handling**: Narrow corridors or obstacle-heavy regions require careful logic to preserve optimality.
 
 - **Grid & Heap Optimization**: Efficient data structures (e.g., priority queues for the open list) can help keep runtime and memory usage in check.
@@ -49,5 +45,124 @@ Based on this [Repository](https://github.com/GurkNathe/Pathfinding-Algorithms) 
 - **Real-Time Efficiency**: The optimized pathfinding ensures that the game remains responsive and engaging, even as paths are recalculated every game tick.
 
 - **Algorithm Comparison for Research**: The inclusion of the A\* comparison module deepens the research aspect of the project, providing a clear analysis of the benefits and limitations of each algorithm.
+
+## Requirements
+
+- Python
+- Required packages:
+  - matplotlib
+  - numpy
+  - tkinter
+  
+Install dependencies:
+
+```bash
+pip install matplotlib numpy tkinter
+```
+
+## Running the Snake Game
+
+Navigate to the game directory:
+
+```bash
+cd '.\Checkpoint 3\src\Snake Game Code'
+```
+
+Run:
+
+```bash
+python snake_game_jps4.py
+```
+
+## Running the Benchmarks
+
+The project includes several benchmark types to evaluate pathfinding performance:
+
+Navigate to the benchmark directory:
+
+```bash
+cd '.\Checkpoint 3\src\Benchmarking Code'
+```
+
+### Quick Benchmark
+
+Provides a fast comparison between JPS4 and A* with different obstacle densities.
+
+```bash
+python main.py --benchmark-type quick
+```
+
+This runs 3 trials with obstacle densities of 0.40, 0.60, and 0.80 on a 100x100 grid.
+
+### Research Benchmark
+
+Runs a comprehensive set of tests with varying obstacle densities to provide a thorough comparison.
+
+```bash
+python main.py --benchmark-type research
+```
+
+This runs trials with obstacle densities from 0.00 to 0.80 (in increments of 0.10), providing detailed metrics on success rates, node expansion, execution time, and path lengths.
+
+### Maze Benchmark
+
+Tests performance specifically in maze-like environments with different grid sizes.
+
+```bash
+python main.py --benchmark-type maze
+```
+
+This runs 5 trials each on maze grids of sizes 50x50, 100x100, 200x200, and 300x300.
+
+### Large Grid Benchmark
+
+Evaluates how the algorithms scale with increasing grid sizes.
+
+```bash
+python main.py --benchmark-type large
+```
+
+This benchmark tests performance on grids ranging from 100x100 to 500x500.
+
+## Benchmark Results
+
+Results are saved in the `tests\benchmark_results` directory (can change it through `path_dir` in `src\Algorithms\helper.py`), organized by benchmark type. Currently, results are available in the repository for the following types: Large, Maze, and Research.
+
+- `benchmark_report.txt`: Overall summary of algorithm performance
+- Individual benchmark folders (e.g., `maze`, `research`) contain:
+  - Detailed reports for each trial
+  - Performance plots comparing JPS4 vs A*
+  - CSV data files of raw results
+
+## Custom Benchmarks
+
+You can create custom benchmarks by modifying parameters:
+
+```bash
+python main.py --benchmark-type custom --grid-size 200 --obstacle-density 0.3 --trials 10
+```
+
+## Interpreting Results
+
+- **Success Rate**: Percentage of trials where a path was found (when one exists)
+- **Average Time**: Average execution time in milliseconds
+- **Nodes Expanded**: Number of nodes processed during search
+- **Path Length**: Length of the final path found
+- **Ratios**: JPS4-to-A* comparison (values > 1 mean JPS4 used more resources)
+
+## Troubleshooting
+
+If you encounter any issues:
+
+1. Ensure all dependencies are installed
+2. For very large benchmarks, increase available memory or reduce grid size
+
+## Team
+
+- **Muhammad Sameer Kamani** - Computer Science, Habib University
+
+- **Muhammad Ibad Nadeem** - Computer Science, Habib University
+- **Muhammad Taqi** - Computer Science, Habib University
+- **Supervisor**: Dr. Waqar Saleem, Habib University
 
 ---

@@ -1,0 +1,80 @@
+JPS4 vs A* Maze Benchmark Results
+================================
+
+Performance in maze-like environments with long corridors
+
+Grid Size: 50x50
+------------------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+
+Avg Time (JPS4): 0.002976s
+Avg Time (A*): 0.004630s
+Time Ratio (JPS4/A*): 0.643x
+
+Avg Nodes Expanded (JPS4): 82.8
+Avg Nodes Expanded (A*): 80.2
+Node Expansion Ratio (JPS4/A*): 1.032x
+
+Avg Path Length (JPS4): 56.2
+Avg Path Length (A*): 68.4
+Path Length Ratio (JPS4/A*): 0.822x
+
+Grid Size: 100x100
+------------------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+
+Avg Time (JPS4): 0.023921s
+Avg Time (A*): 0.001405s
+Time Ratio (JPS4/A*): 17.022x
+
+Avg Nodes Expanded (JPS4): 319.0
+Avg Nodes Expanded (A*): 213.8
+Node Expansion Ratio (JPS4/A*): 1.492x
+
+Avg Path Length (JPS4): 61.0
+Avg Path Length (A*): 134.8
+Path Length Ratio (JPS4/A*): 0.453x
+
+Grid Size: 200x200
+------------------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+
+Avg Time (JPS4): 0.108807s
+Avg Time (A*): 0.006897s
+Time Ratio (JPS4/A*): 15.775x
+
+Avg Nodes Expanded (JPS4): 1133.2
+Avg Nodes Expanded (A*): 345.6
+Node Expansion Ratio (JPS4/A*): 3.279x
+
+Avg Path Length (JPS4): 155.6
+Avg Path Length (A*): 270.6
+Path Length Ratio (JPS4/A*): 0.575x
+
+Grid Size: 300x300
+------------------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+
+Avg Time (JPS4): 0.245127s
+Avg Time (A*): 0.010471s
+Time Ratio (JPS4/A*): 23.410x
+
+Avg Nodes Expanded (JPS4): 2176.8
+Avg Nodes Expanded (A*): 627.8
+Node Expansion Ratio (JPS4/A*): 3.467x
+
+Avg Path Length (JPS4): 156.8
+Avg Path Length (A*): 408.6
+Path Length Ratio (JPS4/A*): 0.384x
+
+
+Overall Analysis
+===============
+JPS4 vs A* in maze-like environments:
+
+Overall Time Ratio (JPS4/A*): 16.272x
+Overall Node Expansion Ratio (JPS4/A*): 2.929x
+
+Conclusions:
+- JPS4 expands 2.9x more nodes than A* in maze environments.
+- JPS4 is 16.3x slower than A* in maze environments.
