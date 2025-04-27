@@ -1,0 +1,46 @@
+JPS4 vs A* Scaling Performance Report
+====================================
+
+Grid Size Performance Metrics
+------------------------------
+
+Grid Size: 50x50
+--------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.014968s
+Avg Time (A*): 0.000873s
+Time Ratio (JPS4/A*): 17.14x
+Avg Nodes Expanded (JPS4): 74.7
+Avg Nodes Expanded (A*): 57.3
+Node Expansion Ratio (JPS4/A*): 1.30x
+
+Grid Size: 100x100
+--------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.007872s
+Avg Time (A*): 0.000000s
+Time Ratio (JPS4/A*): 0.00x
+Avg Nodes Expanded (JPS4): 130.3
+Avg Nodes Expanded (A*): 139.0
+Node Expansion Ratio (JPS4/A*): 0.94x
+
+Grid Size: 150x150
+--------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.017017s
+Avg Time (A*): 0.002677s
+Time Ratio (JPS4/A*): 6.36x
+Avg Nodes Expanded (JPS4): 360.0
+Avg Nodes Expanded (A*): 192.7
+Node Expansion Ratio (JPS4/A*): 1.87x
+
+Grid Size: 200x200
+--------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.018537s
+Avg Time (A*): 0.005207s
+Time Ratio (JPS4/A*): 3.56x
+Avg Nodes Expanded (JPS4): 269.0
+Avg Nodes Expanded (A*): 243.0
+Node Expansion Ratio (JPS4/A*): 1.11x
+

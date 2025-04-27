@@ -1,0 +1,106 @@
+JPS4 vs A* Benchmark Report
+=========================
+
+Obstacle Density: 0.00
+------------------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.018979s
+Avg Time (A*): 0.006588s
+Avg Nodes Expanded (JPS4): 255.9
+Avg Nodes Expanded (A*): 254.9
+Node Expansion Ratio (JPS4/A*): 1.00
+Avg Path Length (JPS4): 254.9
+Avg Path Length (A*): 254.9
+Path Length Ratio (JPS4/A*): 1.00
+
+Obstacle Density: 0.20
+------------------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.048761s
+Avg Time (A*): 0.003456s
+Avg Nodes Expanded (JPS4): 938.3
+Avg Nodes Expanded (A*): 254.9
+Node Expansion Ratio (JPS4/A*): 3.68
+Avg Path Length (JPS4): 68.3
+Avg Path Length (A*): 254.9
+Path Length Ratio (JPS4/A*): 0.27
+
+Obstacle Density: 0.30
+------------------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.026162s
+Avg Time (A*): 0.004330s
+Avg Nodes Expanded (JPS4): 612.4
+Avg Nodes Expanded (A*): 254.9
+Node Expansion Ratio (JPS4/A*): 2.40
+Avg Path Length (JPS4): 110.0
+Avg Path Length (A*): 254.9
+Path Length Ratio (JPS4/A*): 0.43
+
+Obstacle Density: 0.40
+------------------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.010623s
+Avg Time (A*): 0.003843s
+Avg Nodes Expanded (JPS4): 241.4
+Avg Nodes Expanded (A*): 254.9
+Node Expansion Ratio (JPS4/A*): 0.95
+Avg Path Length (JPS4): 65.9
+Avg Path Length (A*): 254.9
+Path Length Ratio (JPS4/A*): 0.26
+
+Obstacle Density: 0.50
+------------------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.020497s
+Avg Time (A*): 0.020085s
+Avg Nodes Expanded (JPS4): 1687.8
+Avg Nodes Expanded (A*): 1547.4
+Node Expansion Ratio (JPS4/A*): 1.09
+Avg Path Length (JPS4): 289.0
+Avg Path Length (A*): 289.0
+Path Length Ratio (JPS4/A*): 1.00
+
+Obstacle Density: 0.60
+------------------------------
+Success Rate: JPS4 90.0%, A* 90.0%
+Avg Time (JPS4): 0.015627s
+Avg Time (A*): 0.019751s
+Avg Nodes Expanded (JPS4): 1171.4
+Avg Nodes Expanded (A*): 1084.0
+Node Expansion Ratio (JPS4/A*): 1.08
+Avg Path Length (JPS4): 290.6
+Avg Path Length (A*): 290.6
+Path Length Ratio (JPS4/A*): 1.00
+
+Obstacle Density: 0.70
+------------------------------
+Success Rate: JPS4 90.0%, A* 90.0%
+Avg Time (JPS4): 0.013543s
+Avg Time (A*): 0.013625s
+Avg Nodes Expanded (JPS4): 895.4
+Avg Nodes Expanded (A*): 834.2
+Node Expansion Ratio (JPS4/A*): 1.07
+Avg Path Length (JPS4): 276.0
+Avg Path Length (A*): 276.0
+Path Length Ratio (JPS4/A*): 1.00
+
+Obstacle Density: 0.80
+------------------------------
+Success Rate: JPS4 90.0%, A* 90.0%
+Avg Time (JPS4): 0.008947s
+Avg Time (A*): 0.010151s
+Avg Nodes Expanded (JPS4): 804.0
+Avg Nodes Expanded (A*): 753.1
+Node Expansion Ratio (JPS4/A*): 1.07
+Avg Path Length (JPS4): 276.4
+Avg Path Length (A*): 276.4
+Path Length Ratio (JPS4/A*): 1.00
+
+Summary:
+========
+Overall Success Rate: JPS4 96.2%, A* 96.2%
+
+Findings:
+- JPS4 search space exploration: Less efficient than A* in terms of nodes expanded.
+- Path optimality: JPS4 produces paths of similar length to A*.

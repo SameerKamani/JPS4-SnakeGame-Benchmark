@@ -1,0 +1,104 @@
+JPS4 vs A* Scaling Performance Report
+====================================
+
+Grid Size Performance Metrics
+------------------------------
+
+Grid Size: 50x50
+--------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.005981s
+Avg Time (A*): 0.001809s
+Time Ratio (JPS4/A*): 3.31x
+Avg Nodes Expanded (JPS4): 122.0
+Avg Nodes Expanded (A*): 56.4
+Node Expansion Ratio (JPS4/A*): 2.16x
+
+Grid Size: 100x100
+--------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.008154s
+Avg Time (A*): 0.003083s
+Time Ratio (JPS4/A*): 2.64x
+Avg Nodes Expanded (JPS4): 158.0
+Avg Nodes Expanded (A*): 141.2
+Node Expansion Ratio (JPS4/A*): 1.12x
+
+Grid Size: 200x200
+--------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.011149s
+Avg Time (A*): 0.005252s
+Time Ratio (JPS4/A*): 2.12x
+Avg Nodes Expanded (JPS4): 189.0
+Avg Nodes Expanded (A*): 248.2
+Node Expansion Ratio (JPS4/A*): 0.76x
+
+Grid Size: 300x300
+--------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.037445s
+Avg Time (A*): 0.007744s
+Time Ratio (JPS4/A*): 4.84x
+Avg Nodes Expanded (JPS4): 960.6
+Avg Nodes Expanded (A*): 366.4
+Node Expansion Ratio (JPS4/A*): 2.62x
+
+Grid Size: 400x400
+--------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.028235s
+Avg Time (A*): 0.009855s
+Time Ratio (JPS4/A*): 2.87x
+Avg Nodes Expanded (JPS4): 733.4
+Avg Nodes Expanded (A*): 528.0
+Node Expansion Ratio (JPS4/A*): 1.39x
+
+Grid Size: 500x500
+--------------------
+Success Rate: JPS4 100.0%, A* 100.0%
+Avg Time (JPS4): 0.046753s
+Avg Time (A*): 0.012124s
+Time Ratio (JPS4/A*): 3.86x
+Avg Nodes Expanded (JPS4): 775.2
+Avg Nodes Expanded (A*): 687.8
+Node Expansion Ratio (JPS4/A*): 1.13x
+
+
+Scaling Analysis:
+================
+From 50x50 to 100x100 (size factor: 2.0x):
+  JPS4 nodes growth: 1.30x, expected O(n): 2.0x, actual vs expected: 0.65
+  A* nodes growth: 2.50x, expected O(n�): 4.0x, actual vs expected: 0.63
+  JPS4 time growth: 1.36x
+  A* time growth: 1.70x
+
+From 100x100 to 200x200 (size factor: 2.0x):
+  JPS4 nodes growth: 1.20x, expected O(n): 2.0x, actual vs expected: 0.60
+  A* nodes growth: 1.76x, expected O(n�): 4.0x, actual vs expected: 0.44
+  JPS4 time growth: 1.37x
+  A* time growth: 1.70x
+
+From 200x200 to 300x300 (size factor: 1.5x):
+  JPS4 nodes growth: 5.08x, expected O(n): 1.5x, actual vs expected: 3.39
+  A* nodes growth: 1.48x, expected O(n�): 2.2x, actual vs expected: 0.66
+  JPS4 time growth: 3.36x
+  A* time growth: 1.47x
+
+From 300x300 to 400x400 (size factor: 1.3x):
+  JPS4 nodes growth: 0.76x, expected O(n): 1.3x, actual vs expected: 0.57
+  A* nodes growth: 1.44x, expected O(n�): 1.8x, actual vs expected: 0.81
+  JPS4 time growth: 0.75x
+  A* time growth: 1.27x
+
+From 400x400 to 500x500 (size factor: 1.2x):
+  JPS4 nodes growth: 1.06x, expected O(n): 1.2x, actual vs expected: 0.85
+  A* nodes growth: 1.30x, expected O(n�): 1.6x, actual vs expected: 0.83
+  JPS4 time growth: 1.66x
+  A* time growth: 1.23x
+
+
+Conclusion:
+For largest grid size (500x500):
+  Time: JPS4 is 0.26x slower than A*
+  Nodes: JPS4 expands 0.89x more nodes than A*

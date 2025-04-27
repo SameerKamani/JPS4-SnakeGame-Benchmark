@@ -65,7 +65,7 @@ pip install matplotlib numpy tkinter
 Navigate to the game directory:
 
 ```bash
-cd '.\Checkpoint 3\src\Snake Game Code'
+cd '.src\Snake Game Code'
 ```
 
 Run:
@@ -81,7 +81,7 @@ The project includes several benchmark types to evaluate pathfinding performance
 Navigate to the benchmark directory:
 
 ```bash
-cd '.\Checkpoint 3\src\Benchmarking Code'
+cd '.src\Benchmarking Code'
 ```
 
 ### Quick Benchmark
@@ -159,7 +159,7 @@ If you encounter any issues:
 
 ## Team
 
-- **Muhammad Sameer Kamani** - Computer Science, Habib University
+- **Sameer Kamani** - Computer Science, Habib University
 
 - **Muhammad Ibad Nadeem** - Computer Science, Habib University
 - **Muhammad Taqi** - Computer Science, Habib University
